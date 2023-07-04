@@ -12,4 +12,5 @@ const start = async () =>{
         console.log(error)
     }
 }
+
 start()
