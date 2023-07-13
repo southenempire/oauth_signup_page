@@ -1,7 +1,7 @@
 const express = require("express")
 const passport = require('passport')
 const {postController} = require('../controllers/signUpContoller')
-require("./strategies/googlestra")
+require("../strategies/googlestra")
 
 const router =  express.Router()
 
