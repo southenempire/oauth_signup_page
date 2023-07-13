@@ -1,11 +1,17 @@
 const express = require('express')
+const passport = require("passport")
 const bodyParser = require("body-parser")
+const session = require("express-session")
 require("dotenv").config()
 
 const signin = require('./routes/route')
 const connectdb = require('./connectdb')
 const app = express()
 
+app.use(session({secret:process.env.SESSION_SECRET, resave:false, saveUninitialized: true,cookie:{secure: true}}))
+app.use(passport.initialize())
+app.use(passport.session())
+ 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(express.json())
