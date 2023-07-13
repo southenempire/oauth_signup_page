@@ -5,7 +5,7 @@ const session = require("express-session")
 require("dotenv").config()
 
 const signin = require('./routes/route')
-const connectdb = require('./connectdb')
+const connectdb = require('./db/connectdb')
 const app = express()
 
 app.use(session({secret:process.env.SESSION_SECRET, resave:false, saveUninitialized: true,cookie:{secure: true}}))
