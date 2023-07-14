@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const schema = new mongoose.Schema({
+const userschema = new mongoose.Schema({
     name:{
         type:String,
         required: true  
@@ -12,8 +12,17 @@ const schema = new mongoose.Schema({
     password:{
         type:String,
         required:[true, 'provide a password']
-
     }
 })
 
-module.exports = mongoose.model('Users', schema)
+const oauthSchema = new mongoose.Schema({
+    provider: String,
+    providerId: String,
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+    },
+  });
+
+module.exports = mongoose.model('Users', userschema)
+module.exports = mongoose.model('Oauth', oauthSchema)
