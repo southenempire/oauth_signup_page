@@ -16,13 +16,22 @@ const userschema = new mongoose.Schema({
 })
 
 const oauthSchema = new mongoose.Schema({
-    provider: String,
-    providerId: String,
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
+    googleID:{
+        type: String,
+        required: true
     },
+    namw:{
+        type: String,
+        required: true
+    },
+    photos:{
+        type: String,
+        required: true
+    }
   });
 
-module.exports = mongoose.model('Users', userschema)
-module.exports = mongoose.model('Oauth', oauthSchema)
+const usermodel= mongoose.model('Users', userschema)
+const oauthmodel = mongoose.model('Oauth', oauthSchema)
+module.exports = {
+    usermodel,oauthmodel
+}
