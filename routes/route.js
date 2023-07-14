@@ -6,7 +6,7 @@ require("../strategies/googlestra")
 const router =  express.Router()
 
 router.get("/", getController )
-router.get("/auth", postController, passport.authenticate('google', {scope:["email","profile"]}))
+router.post("/auth", postController, passport.authenticate('google', {scope:["email","profile"]}))
 router.get("/auth/google/callback", passport.authenticate("google",{
     successRedirect:"/",
     failureRedirect:"/auth/failure"
