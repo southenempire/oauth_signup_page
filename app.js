@@ -2,6 +2,8 @@ const express = require('express')
 const passport = require("passport")
 const bodyParser = require("body-parser")
 const session = require("express-session")
+const errorhandler = require("./error/error-handler")
+const notFound = require("./middleware/not-found")
 require("dotenv").config()
 
 const signin = require('./routes/route')
@@ -17,6 +19,8 @@ app.use(bodyParser.json())
 app.use(express.json())
 app.use('/', signin)
 
+app.use(notFound)
+app.use(errorhandler)
 
 const port = process.env.PORT
 const start = async () =>{
