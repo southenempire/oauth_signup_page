@@ -5,6 +5,7 @@ const session = require("express-session")
 const errorhandler = require("./error/error-handler")
 const notFound = require("./middleware/not-found")
 require("dotenv").config()
+require("./strategies/googlestra")
 
 const signin = require('./routes/route')
 const connectdb = require('./db/connectdb')
@@ -26,7 +27,8 @@ const port = process.env.PORT
 const start = async () =>{
     try {
         await connectdb(process.env.MONGODB_CONNECT)
-        app.listen(port)
+        app.listen(port, console.log("server is starting on port 3000"))
+        
     } catch (error) {
         console.log(error)
     }
