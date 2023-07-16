@@ -6,6 +6,7 @@ const errorhandler = require("./error/error-handler")
 const notFound = require("./middleware/not-found")
 require("dotenv").config()
 require("./strategies/googlestra")
+require("express-async-errors")
 
 const signin = require('./routes/route')
 const connectdb = require('./db/connectdb')
