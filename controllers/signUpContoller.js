@@ -1,15 +1,16 @@
 const user = require("../model/signupModel")
+const bcrypt = require("bcrypt")
+const {StatusCodes} = require("http-status-codes")
 
 const getController = async (req,res) =>{
     res.send("testing")
 }
-const postController = async (req,res) =>{
+const register = async (req,res) =>{
     await user.create(req.body)
-    res.status(200).json({createduser:user})
-
+    res.status(StatusCodes.CREATED).json({createduser:user})
 }
 
 
 module.exports = {
-    postController,getController
+    register,getController
 }

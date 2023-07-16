@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt")
 
 const userschema = new mongoose.Schema({
     name:{
@@ -29,6 +30,11 @@ const oauthSchema = new mongoose.Schema({
         required: true
     }
   });
+
+  userschema.pre("save", async function(){
+    const hash = await bcrypt.genSalt(10)
+    this.password = bcrypt.hash(this.password, hash)
+  })
 
 const usermodel= mongoose.model('Users', userschema)
 const oauthmodel = mongoose.model('Oauth', oauthSchema)
